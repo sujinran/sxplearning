@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<title>交互式学习录播器</title>
+</head>
+<style>
+
+#header_container {
+    position:fixed;
+	top:0;
+    width:100%;
+	height:50px;
+	background-color:#bebebe;
+}
+
+
+<!--头部导航样式-->
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+.dropdown {
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #cc0000
+	}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+li a:hover, .dropdown:hover, .dropbtn {
+    background-color: #cc0000;
+}
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+#header {
+    text-align:center;
+}
+
+
+<!--左侧链接样式-->
+ul
+{
+list-style:none;
+margin:0;
+padding:0;
+}
+a:link,a:visited
+{   
+    display:block;
+    font-weight:bold;
+    color:#333;
+    background-color:#bebebe;
+    width:250px;
+	height:40px;
+    text-align:left;
+    padding:6px;
+    text-transform:uppercase;
+}
+a:hover,a:active
+{
+    background-color:#cc0000;
+}
+
+
+
+
+
+
+
+
+<!--弹出的页面-->
+.black_overlay{ 
+            display: none; 
+            position: absolute; 
+            top: 0%; 
+            left: 0%; 
+            width: 100%; 
+            height: 100%; 
+            background-color: black; 
+            z-index:1001; 
+            -moz-opacity: 0.8; 
+            opacity:.80; 
+            filter: alpha(opacity=88); 
+        } 
+        .white_content { 
+            display: none; 
+            position: absolute; 
+            top: 25%; 
+            left: 25%; 
+            width: 55%; 
+            height: 55%; 
+            padding: 20px; 
+            border: 10px solid orange; 
+            background-color: white; 
+            z-index:1002; 
+            overflow: auto; 
+        } 
+
+</style>
+
+
+
+
+<body  background="images/1.jpg" >
+<div id="header_container" >
+
+
+<ul>
+   <li><a class="active" href="#home">主页</a></li>
+   
+  <div class="dropdown">
+    <a href="#" class="dropbtn">我的课程</a>
+    <div class="dropdown-content">
+      <a href="https://www.imooc.com/video/20542">第一讲</a>
+      <a href="https://www.imooc.com/video/20538">第二讲</a>
+      <a href="https://www.imooc.com/video/20539">第三讲</a>
+    </div>
+  </div>
+      <li><a href="#about">关于本站</a></li>
+      <li><a href="#my">帮助</a></li>
+	  <li><a href="#register">登录</a></li>
+	  
+</ul>
+ 
+</br>
+</div>
+
+
+</br>
+</br>
+<div id="header">
+<h1>交互式学习录播器</h1>
+</div>
+
+<div id="right" style="float:right; width:30%; height:100%;">
+<form name="input" action="html_form_action.php" method="get">
+    <button onclick="textQA()">文本问答：</button>
+    <input type="text" name="user">
+    <input type="submit" value="Submit">
+</form></br>
+
+	<div class="app">
+    <button class="record-btn">录音问答：</button>
+	</br>
+	</br>
+    <audio controls class="audio-player"></audio>
+    </div>
+ <script src="js/Recorder.js"></script>
+ 
+	</br>
+    <button onclick="videoQA()">视频问答：</button>
+	</br>
+	</br>
+	<button onclick="videoQA()">问题测试：</button>
+	<p> <a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">请点击此处进行测试</a></p> 
+        <div id="light" class="white_content">本章的问题如下 
+		<p> 1、目前常用的WEB标准静态页面语言是<input type="text" style="color:red"> </p>
+		<p> 2、改变元素的外边距用<input type="text" style="color:red">改变元素的內填充用 </p>
+		<p> 3、在Table中，TR是<input type="text" style="color:red">TD是<input type="text" style="color:red"></p>
+		<p> 4、如果给一行两列的表格(table) 定义高度样式，在<input type="text" style="color:red">标签中定义最合理，<input type="text" style="color:red">最能减少代码的臃肿。 </p>
+		<p> 5、对ul li的样式设成无，应该是用什么属性<input type="text" style="color:red"></p>
+		<p> 6、从本视频中你学到了什么？</br>
+		<input type="text" style="color:red"></P>
+		
+<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">提交问题</a></div> 
+        <div id="fade" class="black_overlay">
+		</div> 
+</div>
+
+<div id="left" style="float:left ; width:20%; height:100%;font-size:20px;" >
+<ul>
+<li><a href="mp4/1.mp4">Web前端</a></li>
+<li><a href="mp4/2.wmv">java程序设计</a></li>
+<li><a href="mp4/3.mp4">数据库系统概论</a></li>
+<li><a href="https://v.qq.com/x/cover/iuhr4ccnfy6hh5f/p1420xn7rr6.html">物联网通信技术</a></li>
+</ul>
+</div>
+
+
+<div id="middle" style="text-align:center; width:70%; height:100%;" >
+<button onclick="playPause()">播放/暂停</button>
+<button onclick="makeBig()">放大</button>
+<button onclick="makeNormal()">正常</button>
+<button onclick="makeSmall()">缩小</button>
+</br>
+</br>
+<video id="learnvideo" width="500" style="center;" controls="controls">
+  <source src="mp4/movie.mp4" type="video/mp4"/>
+  <source src="mp4/movie.mp4" type="video/mp4"/>
+  <source src="mp4/movie.ogg" type="video/ogg"/>
+  <source src="mp4/movie.mp4" type="video/mp4" />
+  Your browser does not support HTML5 video.
+  <br />
+</video>
+</div>
+
+
+
+
+</body>
+
+<script type="text/javascript">
+        var myVideo=document.getElementById("learnvideo");
+		
+    function textQA() {
+     var txt;
+     var question = prompt("请输入您要提问的问题：");
+  if (question == null || question == "") {
+    txt = "用户取消提问问题！";
+  } else {
+    txt = "您好！您提问的问题是：" + question;
+  }
+  document.getElementById("demo").innerHTML = txt;
+}
+function playPause()
+{ 
+if (myVideo.paused) 
+  myVideo.play(); 
+else 
+  myVideo.pause(); 
+} 
+
+function makeBig()
+{ 
+myVideo.width=600; 
+} 
+
+function makeSmall()
+{ 
+myVideo.width=400; 
+} 
+
+function makeNormal()
+{ 
+myVideo.width=500; 
+} 
+
+function testQA(){
+    
+}
+
+</script>
+
+<script type="application/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/Recorder.js"></script>
+<script type="application/javascript" >
+
+ if (navigator.mediaDevices) {
+  console.log('getUserMedia supported.');
+
+  var constraints = { audio: true };
+  var chunks = [];
+
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+
+    var mediaRecorder = new MediaRecorder(stream);
+
+    visualize(stream);
+	
+    <!--录音开始-->
+    record.onclick = function() {
+      mediaRecorder.start();
+      console.log(mediaRecorder.state);
+      console.log("recorder started");
+      record.style.background = "red";
+      record.style.color = "black";
+    }
+    <!--录音结束-->
+    stop.onclick = function() {
+      mediaRecorder.stop();
+      console.log(mediaRecorder.state);
+      console.log("recorder stopped");
+      record.style.background = "";
+      record.style.color = "";
+    }
+
+    mediaRecorder.onstop = function(e) {
+      console.log("data available after MediaRecorder.stop() called.");
+
+      var clipName = prompt('Enter a name for your sound clip');
+      var clipContainer = document.createElement('article');
+      var clipLabel = document.createElement('p');
+      var audio = document.createElement('audio');
+      var deleteButton = document.createElement('button');
+     
+      clipContainer.classList.add('clip');
+      audio.setAttribute('controls', '');
+      deleteButton.innerHTML = "Delete";
+      clipLabel.innerHTML = clipName;
+
+      clipContainer.appendChild(audio);
+      clipContainer.appendChild(clipLabel);
+      clipContainer.appendChild(deleteButton);
+      soundClips.appendChild(clipContainer);
+	  
+      <!--使用数组保存录音-->
+      audio.controls = true;
+      var blob = new Blob(chunks, { 'type' : 'audio/ogg; codecs=opus' });
+      chunks = [];
+      var audioURL = URL.createObjectURL(blob);
+      audio.src = audioURL;
+      console.log("recorder stopped");
+
+      deleteButton.onclick = function(e) {
+        evtTgt = e.target;
+        evtTgt.parentNode.parentNode.removeChild(evtTgt.parentNode);
+      }
+    }
+
+    mediaRecorder.ondataavailable = function(e) {
+      chunks.push(e.data);
+    }
+  })
+  .catch(function(err) {
+    console.log('The following error occurred: ' + err);
+  })
+}
+
+</script>
+
+</html>
